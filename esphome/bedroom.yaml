@@ -1,0 +1,56 @@
+# Nodo Bedroom — ESP8266 + relay 5V 1 polo
+#
+# Primer nodo del sistema. Empieza solo con el relay; el DHT22 y el PIR
+# se agregan despues (los bloques estan comentados abajo).
+#
+# Entidad resultante: light.bedroom_light
+# (entity_id = <nombre del dispositivo>_<nombre del componente>)
+
+substitutions:
+  node_name: "bedroom"
+  friendly_name: "Bedroom"
+
+packages:
+  base: !include common/base.yaml
+
+esp8266:
+  board: nodemcuv2 # usar d1_mini si es una Wemos D1 mini
+
+# --- Relay ---
+# ESTE MODULO ES ACTIVE-HIGH: energiza cuando IN recibe tension, no cuando
+# va a GND. Por eso NO lleva "inverted: true". Verificado en hardware.
+#
+# GPIO5 (D1) es pin seguro. Con un modulo active-HIGH hay que evitar sobre
+# todo GPIO0 (D3) y GPIO2 (D4): estan en alto durante el arranque y
+# activarian el relay en cada boot.
+output:
+  - platform: gpio
+    id: relay_output
+    pin:
+      number: GPIO5
+
+# Se expone como light (no como switch) porque la carga es una lampara.
+# ALWAYS_OFF: tras un corte de luz el nodo arranca apagado en vez de
+# recordar su estado anterior.
+light:
+  - platform: binary
+    name: "Light"
+    output: relay_output
+    restore_mode: ALWAYS_OFF
+# --- Sensores (agregar cuando llegue el hardware) ---
+#
+# sensor:
+#   - platform: dht
+#     pin: GPIO4          # D2
+#     model: DHT22
+#     temperature:
+#       name: "Temperature"
+#     humidity:
+#       name: "Humidity"
+#     update_interval: 30s
+#
+# binary_sensor:
+#   - platform: gpio
+#     pin: GPIO12         # D6
+#     name: "Motion"
+#     device_class: motion

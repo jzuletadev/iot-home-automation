@@ -1,0 +1,14 @@
+node,component,qty,unit_cost_gtq,notes
+bedroom,ESP8266 NodeMCU v2,1,50,GPIO5 (D1) para el relay - MAC 44:17:93:14:86:B2
+bedroom,Modulo relay 5V 1 canal con optoacoplador,1,35,ACTIVE-HIGH - sin inverted en el YAML - dispara con 3.3V del ESP
+bedroom,DHT22,1,30,Pendiente - fase de sensores
+bedroom,PIR HC-SR501,1,25,Pendiente - fase de sensores
+bedroom,Cargador USB 5V 1A,1,20,Alimentacion provisional de banco
+bedroom,Cables dupont + protoboard,1,40,Solo para banco de pruebas
+core,Raspberry Pi 4 2GB,1,800,Instalado
+core,MicroSD 32GB clase 10 A2,1,100,Instalado
+core,Fuente USB-C 5V 3A,1,90,Instalado
+bedroom,HLK-PM01 120VAC a 5VDC 3W,1,60,Alimentacion permanente desde la linea
+bedroom,Capacitor electrolitico 470-1000uF 10V,1,5,Entre +Vo y -Vo cerca del NodeMCU
+bedroom,Snubber RC 100ohm + 100nF X2,1,15,Opcional - alarga vida del relay con carga inductiva
+bedroom,Caja electrica plastica,1,15,Gabinete con prensacables

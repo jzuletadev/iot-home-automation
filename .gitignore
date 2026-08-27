@@ -1,0 +1,40 @@
+# --- Secretos ---
+# Credenciales de WiFi, claves de API y tokens. NUNCA versionar.
+esphome/secrets.yaml
+homeassistant/secrets.yaml
+.env
+.env.*
+!.env.example
+
+# --- ESPHome ---
+# Artefactos de compilacion y firmware generado
+esphome/.esphome/
+esphome/**/.pioenvs/
+esphome/**/.piolibdeps/
+*.bin
+
+# --- Home Assistant ---
+# Estado interno, base de datos y logs: se regeneran solos y pesan mucho
+homeassistant/.storage/
+homeassistant/.cloud/
+homeassistant/home-assistant_v2.db*
+homeassistant/home-assistant.log*
+homeassistant/tts/
+homeassistant/deps/
+homeassistant/backups/
+homeassistant/*.db-shm
+homeassistant/*.db-wal
+
+# --- Apps (Node / Expo) ---
+node_modules/
+.expo/
+dist/
+web-build/
+*.tsbuildinfo
+apps/**/ios/
+apps/**/android/
+
+# --- Sistema ---
+.DS_Store
+Thumbs.db
+desktop.ini
